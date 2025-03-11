@@ -1,0 +1,8 @@
+db:
+  host: localhost
+  port: "5432"
+  user: admin
+  password: secret
+  dbname: ecommerce
+  sslmode: disable
+  pool_max: 20  # Maximum connection pool size
