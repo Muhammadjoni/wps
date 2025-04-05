@@ -35,67 +35,67 @@
 // 	return products, nil
 // }
 
-
 package postgres
 
 import (
-    "context"
-    "backend/internal/model"
-    "errors"
-    "github.com/jackc/pgx/v5"
-    "github.com/jackc/pgx/v5/pgxpool"
-    "github.com/georgysavva/scany/v2/pgxscan"
+	"backend/internal/model"
+	"context"
+	"errors"
+
+	"github.com/georgysavva/scany/v2/pgxscan"
+	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
 )
 
 type ProductRepository struct {
-    pool *pgxpool.Pool
+	pool *pgxpool.Pool
 }
 
 func NewProductRepository(pool *pgxpool.Pool) *ProductRepository {
-    return &ProductRepository{pool: pool}
+	return &ProductRepository{pool: pool}
 }
 
 func (r *ProductRepository) Create(ctx context.Context, product *model.Product) error {
-    query := `
+	query := `
         INSERT INTO products (name, description, price, stock)
         VALUES ($1, $2, $3, $4)
         RETURNING id, created_at, updated_at
     `
-    
-    return r.pool.QueryRow(ctx, query,
-        product.Name,
-        product.Description,
-        product.Price,
-        product.Stock,
-    ).Scan(&product.ID, &product.CreatedAt, &product.UpdatedAt)
+
+	return r.pool.QueryRow(ctx, query,
+		product.Name,
+		product.Description,
+		product.Price,
+		product.Stock,
+	).Scan(&product.ID, &product.CreatedAt, &product.UpdatedAt)
 }
 
 func (r *ProductRepository) FindByID(ctx context.Context, id int) (*model.Product, error) {
-    var product model.Product
-    query := `SELECT * FROM products WHERE id = $1`
-    
-    err := pgxscan.Get(ctx, r.pool, &product, query, id)
-    if err != nil {
-        if errors.Is(err, pgx.ErrNoRows) {
-            return nil, nil
-        }
-        return nil, err
-    }
-    return &product, nil
+	var product model.Product
+	query := `SELECT * FROM products WHERE id = $1`
+
+	err := pgxscan.Get(ctx, r.pool, &product, query, id)
+	if err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return nil, nil
+		}
+		return nil, err
+	}
+	return &product, nil
 }
 
 func (r *ProductRepository) FindAll(ctx context.Context) ([]model.Product, error) {
-    var products []model.Product
-    query := `SELECT * FROM products`
-    
-    rows, err := r.pool.Query(ctx, query)
-    if err != nil {
-        return nil, err
-    }
-    defer rows.Close()
-    
-    if err := pgxscan.ScanAll(&products, rows); err != nil {
-        return nil, err
-    }
-    return products, nil
+	var products []model.Product
+	query := `SELECT * FROM products`
+
+	rows, err := r.pool.Query(ctx, query)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	if err := pgxscan.ScanAll(&products, rows); err != nil {
+		return nil, err
+	}
+	return products, nil
 }

@@ -2,8 +2,9 @@ package routes
 
 import (
 	"backend/internal/controller"
-	"github.com/go-chi/jwtauth/v5"
+
 	"github.com/go-chi/chi"
+	"github.com/go-chi/jwtauth/v5"
 )
 
 func ProductRoutes(r chi.Router, h *controller.ProductHandler, tokenAuth *jwtauth.JWTAuth) {
