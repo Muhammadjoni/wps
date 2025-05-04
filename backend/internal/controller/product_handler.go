@@ -44,3 +44,4 @@ func (h *ProductHandler) CreateProduct(w http.ResponseWriter, r *http.Request) {
 }
 
 // Similar handler methods for other endpoints
+ 
