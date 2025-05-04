@@ -79,11 +79,11 @@ Chi Router for HTTP handling
 
 YAML Config for flexibility
 
-📄 License
+## 📄 License
 This project is licensed under the MIT License.
 
-🤝 Contributing
+## 🤝 Contributing
 Pull requests and suggestions are welcome! For major changes, please open an issue first to discuss what you’d like to change.
 
-📫 Contact
+## 📫 Contact
 Muhammadjoni Rahimzod – LinkedIn
