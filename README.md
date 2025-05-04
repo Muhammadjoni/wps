@@ -7,7 +7,7 @@ Built with **Go (Golang)** using a layered monorepo architecture, the system pro
 ---
 
 ## 🏗️ Project Structure
-
+```
 wps-backend/
 │
 ├── cmd/ # Application entry point
@@ -24,7 +24,7 @@ wps-backend/
 ├── migrations/ # SQL migrations
 ├── pkg/ # Utilities (logger, db, cache, etc.)
 └── frontend/ # Frontend (placeholder)
-
+```
 
 ## 🚀 Getting Started
 
