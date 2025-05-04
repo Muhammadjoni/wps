@@ -36,23 +36,17 @@ wps-backend/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/wps-backend.git
-cd wps-backend
-
-2. Configure the environment
+1. Configure the environment
 Edit your config/config.yaml file as needed.
-
-
-Edit
 server:
 
 database:
 
 redis:
 
-3. Run migrations
+2. Run migrations
 
-4. Start the server
+3. Start the server
 
 go run cmd/main.go
 
