@@ -33,10 +33,11 @@ wps-backend/
 - PostgreSQL 14+
 - Redis 6+
 - Docker (optional, for local dev)
-
-### 1. Clone the repository
+  
 ```bash
-1. Configure the environment
+1. Clone the repository
+
+2. Configure the environment
 Edit your config/config.yaml file as needed.
 server:
 
@@ -44,14 +45,15 @@ database:
 
 redis:
 
-2. Run migrations
+3. Run migrations
 
-3. Start the server
+4. Start the server
 
 go run cmd/main.go
 
+```
 
-### 📦 Features
+## 📦 Features
 ✅ Modular monorepo architecture
 
 ✅ REST API with chi
@@ -62,9 +64,9 @@ go run cmd/main.go
 
 ✅ Configurable with YAML
 
-### 🧩 Booking & Payment modules coming soon
+## 🧩 Booking & Payment modules coming soon
 
-### 🧠 Tech Stack
+## 🧠 Tech Stack
 Go (Golang)
 
 PostgreSQL via pgx
